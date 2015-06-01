@@ -10,13 +10,15 @@ import UIKit
 
 class TweetTableViewController: UITableViewController
 {
-    // MARK: - Model
-    
-    var tweets = [[Tweet]]()
+    // MARK: - Definitions
     
     private struct Storyboard {
         static let CellReuseIdentifier = "Tweet"
     }
+    
+    // MARK: - Model
+    
+    var tweets = [[Tweet]]()
     
     // MARK: - View Controller Lifecycle
     
@@ -42,7 +44,7 @@ class TweetTableViewController: UITableViewController
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
-    // MARK: - Table view data source
+    // MARK: - UITableViewDataSource
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
