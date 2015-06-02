@@ -22,6 +22,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate
     
     var searchText: String? = "#stanford" {
         didSet {
+            lastSuccesfulRequest = nil
             searchTextField?.text = searchText
             tweets.removeAll()
             tableView.reloadData()
@@ -35,25 +36,53 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        tableView.estimatedRowHeight = tableView.rowHeight
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         refresh()
+    }
+    
+    var lastSuccesfulRequest: TwitterRequest?
+    
+    var nextRequestToAttempt: TwitterRequest? {
+        if lastSuccesfulRequest == nil {
+            if searchText != nil {
+                return TwitterRequest(search: searchText!, count: 100)
+            } else {
+                return nil
+            }
+        } else {
+            return lastSuccesfulRequest!.requestForNewer
+        }
     }
     
     private func refresh()
     {
+        refreshControl?.beginRefreshing()
+        refresh(refreshControl)
+    }
+
+    @IBAction func refresh(sender: UIRefreshControl?)
+    {
         if searchText != nil {
-            let request = TwitterRequest(search: searchText!, count: 100)
-            
-            request.fetchTweets { (newTweets) -> Void in
-                dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                    if newTweets.count > 0 {
-                        self.tweets.insert(newTweets, atIndex: 0)
-                        self.tableView.reloadData()
+            if let request = nextRequestToAttempt {
+                request.fetchTweets { (newTweets) -> Void in
+                    dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                        if newTweets.count > 0 {
+                            self.lastSuccesfulRequest = request
+                            self.tweets.insert(newTweets, atIndex: 0)
+                            self.tableView.reloadData()
+                        }
+                        sender?.endRefreshing()
                     }
                 }
             }
+        } else {
+            sender?.endRefreshing()
         }
     }
-
+    
     // MARK: - UITextFieldDelegate
     
     @IBOutlet weak var searchTextField: UITextField! {

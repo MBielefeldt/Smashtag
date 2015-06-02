@@ -28,8 +28,15 @@ class TweetTableViewCell: UITableViewCell
         
         if let tweet = self.tweet {
             if let profileImageURL = tweet.user.profileImageURL {
-                if let imageData = NSData(contentsOfURL: profileImageURL) {
-                    tweetProfileImageView?.image = UIImage(data: imageData)
+                let qos = Int(QOS_CLASS_USER_INTERACTIVE.value)
+                dispatch_async(dispatch_get_global_queue(qos, 0)) { () -> Void in
+                    if let imageData = NSData(contentsOfURL: profileImageURL) {
+                        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                            if profileImageURL == self.tweet?.user.profileImageURL {
+                                self.tweetProfileImageView?.image = UIImage(data: imageData)
+                            }
+                        }
+                    }
                 }
             }
             
