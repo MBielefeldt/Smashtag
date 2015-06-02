@@ -17,6 +17,7 @@
 		0873A3801B1BBB8900F98341 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0873A37C1B1BBB8900F98341 /* Tweet.swift */; };
 		0873A3811B1BBB8900F98341 /* TwitterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0873A37D1B1BBB8900F98341 /* TwitterRequest.swift */; };
 		0873A3821B1BBB8900F98341 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0873A37E1B1BBB8900F98341 /* User.swift */; };
+		0898A50D1B1E4B8E00487119 /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0898A50C1B1E4B8E00487119 /* TweetTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		0873A37C1B1BBB8900F98341 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		0873A37D1B1BBB8900F98341 /* TwitterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterRequest.swift; sourceTree = "<group>"; };
 		0873A37E1B1BBB8900F98341 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0898A50C1B1E4B8E00487119 /* TweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			children = (
 				0873A35A1B1BBA2800F98341 /* Main.storyboard */,
 				0873A3781B1BBAE500F98341 /* TweetTableViewController.swift */,
+				0898A50C1B1E4B8E00487119 /* TweetTableViewCell.swift */,
 				0873A37A1B1BBB8900F98341 /* Twitter */,
 				0873A3541B1BBA2800F98341 /* Supporting Files */,
 			);
@@ -238,6 +241,7 @@
 				0873A3791B1BBAE500F98341 /* TweetTableViewController.swift in Sources */,
 				0873A37F1B1BBB8900F98341 /* MediaItem.swift in Sources */,
 				0873A3801B1BBB8900F98341 /* Tweet.swift in Sources */,
+				0898A50D1B1E4B8E00487119 /* TweetTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +439,7 @@
 				0873A3721B1BBA2800F98341 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0873A3731B1BBA2800F98341 /* Build configuration list for PBXNativeTarget "SmashtagTests" */ = {
 			isa = XCConfigurationList;
@@ -443,6 +448,7 @@
 				0873A3751B1BBA2800F98341 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
